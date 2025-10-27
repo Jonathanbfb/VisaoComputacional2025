@@ -36,5 +36,62 @@
       gap: 16px;
     }
   </style>
+
+
+
+
+<!-- Note the position: relative style -->
+<span style="position: relative">
+  <md-filled-button id="usage-anchor">Set with idref</md-filled-button>
+  <md-menu id="usage-menu" anchor="usage-anchor">
+    <md-menu-item>
+      <div slot="headline">Apple</div>
+    </md-menu-item>
+    <md-menu-item>
+      <div slot="headline">Banana</div>
+    </md-menu-item>
+    <md-menu-item>
+      <div slot="headline">Cucumber</div>
+    </md-menu-item>
+  </md-menu>
+</span>
+
+<script type="module">
+  // This example uses anchor as an ID reference
+  const anchorEl = document.body.querySelector('#usage-anchor');
+  const menuEl = document.body.querySelector('#usage-menu');
+
+  anchorEl.addEventListener('click', () => { menuEl.open = !menuEl.open; });
+</script>
+
+<span style="position: relative">
+  <md-filled-button id="usage-anchor-2">Set with element ref</md-filled-button>
+  <md-menu id="usage-menu-2">
+    <md-menu-item>
+      <div slot="headline">Apple</div>
+    </md-menu-item>
+    <md-menu-item>
+      <div slot="headline">Banana</div>
+    </md-menu-item>
+    <md-menu-item>
+      <div slot="headline">Cucumber</div>
+    </md-menu-item>
+  </md-menu>
+</span>
+
+<script type="module">
+  // This example uses MdMenu.prototype.anchorElement to set the anchor as an
+  // HTMLElement reference.
+  const anchorEl = document.body.querySelector('#usage-anchor-2');
+  const menuEl = document.body.querySelector('#usage-menu-2');
+  menuEl.anchorElement = anchorEl;
+
+  anchorEl.addEventListener('click', () => { menuEl.open = !menuEl.open; });
+</script>
+
+
+
+
+
 </body>
-</html:>
+</html>
