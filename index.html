@@ -2,37 +2,44 @@
 <html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <title>MUI + CDN no GitHub Pages</title>
-    <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <!-- Fonts -->
+    <title>MUI CDN + GitHub Pages</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <!-- Fontes e ícones -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
-    <!-- Material Icons -->
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet"
+    />
 
-    <!-- Import Map para módulos ESM na web -->
+    <!-- Import map -->
     <script type="importmap">
       {
         "imports": {
           "react": "https://esm.sh/react@18",
           "react-dom/client": "https://esm.sh/react-dom@18/client",
           "react/jsx-runtime": "https://esm.sh/react@18/jsx-runtime",
-          "@mui/material": "https://esm.sh/@mui/material@latest?external=react,react-dom",
-          "@mui/material/colors": "https://esm.sh/@mui/material@latest/colors?external=react,react-dom",
+          "@mui/material": "https://esm.sh/@mui/material@latest?external=react,@emotion/react,@emotion/styled,react-dom/client",
+          "@mui/material/colors": "https://esm.sh/@mui/material@latest/colors?external=react,@emotion/react,@emotion/styled,react-dom/client",
           "@emotion/react": "https://esm.sh/@emotion/react@latest?external=react",
           "@emotion/styled": "https://esm.sh/@emotion/styled@latest?external=react,@emotion/react"
         }
       }
     </script>
   </head>
+
   <body>
     <div id="root"></div>
 
-    <!-- Babel Standalone só para transformar JSX no navegador -->
+    <!-- Babel Standalone (para permitir JSX no navegador) -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
 
-    <!-- Seu app: JSX + ES Modules -->
+    <!-- Script principal -->
     <script type="text/babel" data-type="module">
       import * as React from "react";
       import { createRoot } from "react-dom/client";
@@ -44,18 +51,17 @@
         Box,
         SvgIcon,
         Link,
-        createTheme
+        createTheme,
       } from "@mui/material";
       import { red } from "@mui/material/colors";
 
-      // Tema do MUI
       const theme = createTheme({
         cssVariables: true,
         palette: {
           primary: { main: "#556cd6" },
           secondary: { main: "#19857b" },
-          error: { main: red.A400 }
-        }
+          error: { main: red.A400 },
+        },
       });
 
       function LightBulbIcon(props) {
@@ -79,28 +85,17 @@
         );
       }
 
-      function Copyright() {
-        return (
-          <Typography variant="body2" color="text.secondary" align="center">
-            {"Copyright © "}
-            <Link color="inherit" href="https://mui.com/">
-              Seu Site
-            </Link>{" "}
-            {new Date().getFullYear()}
-            {"."}
-          </Typography>
-        );
-      }
-
       function App() {
         return (
           <Container maxWidth="sm">
             <Box sx={{ my: 4 }}>
               <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                Material UI via CDN (GitHub Pages)
+                Exemplo Material UI via CDN
               </Typography>
               <ProTip />
-              <Copyright />
+              <Typography variant="body2" align="center" color="text.secondary">
+                © {new Date().getFullYear()} - Jonathan Barros
+              </Typography>
             </Box>
           </Container>
         );
