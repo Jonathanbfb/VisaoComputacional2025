@@ -1,64 +1,61 @@
-<!DOCTYPE html>
-<html lang="en">
-<<<<<<< HEAD
+<!doctype html>
+<html lang="pt-BR">
   <head>
     <meta charset="utf-8" />
-    <title>My page</title>
+    <title>MUI + CDN no GitHub Pages</title>
     <meta name="viewport" content="initial-scale=1, width=device-width" />
-    <!-- Fonts to support Material Design -->
+    <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      rel="stylesheet"
-      href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap"
-    />
-    <!-- Icons to support Material Design -->
-    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet" />
+    <!-- Material Icons -->
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+
+    <!-- Import Map para módulos ESM na web -->
     <script type="importmap">
       {
         "imports": {
-          "react": "https://esm.sh/react@^18",
-          "react-dom": "https://esm.sh/react-dom@^18",
-          "react/jsx-runtime": "https://esm.sh/react@^18/jsx-runtime",
-          "@mui/material": "https://esm.sh/@mui/material@latest?external=react"
+          "react": "https://esm.sh/react@18",
+          "react-dom/client": "https://esm.sh/react-dom@18/client",
+          "react/jsx-runtime": "https://esm.sh/react@18/jsx-runtime",
+          "@mui/material": "https://esm.sh/@mui/material@latest?external=react,react-dom",
+          "@mui/material/colors": "https://esm.sh/@mui/material@latest/colors?external=react,react-dom",
+          "@emotion/react": "https://esm.sh/@emotion/react@latest?external=react",
+          "@emotion/styled": "https://esm.sh/@emotion/styled@latest?external=react,@emotion/react"
         }
       }
     </script>
   </head>
   <body>
     <div id="root"></div>
-    <!-- Babel -->
+
+    <!-- Babel Standalone só para transformar JSX no navegador -->
     <script src="https://unpkg.com/@babel/standalone/babel.min.js"></script>
-    <!-- Usage -->
+
+    <!-- Seu app: JSX + ES Modules -->
     <script type="text/babel" data-type="module">
-      import * as React from 'react';
-      import { createRoot } from 'react-dom';
+      import * as React from "react";
+      import { createRoot } from "react-dom/client";
       import {
-        colors,
         CssBaseline,
         ThemeProvider,
         Typography,
         Container,
-        createTheme,
         Box,
         SvgIcon,
         Link,
-      } from '@mui/material';
+        createTheme
+      } from "@mui/material";
+      import { red } from "@mui/material/colors";
 
-      // Create a theme instance.
+      // Tema do MUI
       const theme = createTheme({
         cssVariables: true,
         palette: {
-          primary: {
-            main: '#556cd6',
-          },
-          secondary: {
-            main: '#19857b',
-          },
-          error: {
-            main: colors.red.A400,
-          },
-        },
+          primary: { main: "#556cd6" },
+          secondary: { main: "#19857b" },
+          error: { main: red.A400 }
+        }
       });
 
       function LightBulbIcon(props) {
@@ -71,11 +68,13 @@
 
       function ProTip() {
         return (
-          <Typography sx={{ mt: 6, mb: 3, color: 'text.secondary' }}>
-            <LightBulbIcon sx={{ mr: 1, verticalAlign: 'middle' }} />
-            {'Pro tip: See more '}
-            <Link href="https://mui.com/material-ui/getting-started/templates/">templates</Link>
-            {' in the Material UI documentation.'}
+          <Typography sx={{ mt: 6, mb: 3, color: "text.secondary" }}>
+            <LightBulbIcon sx={{ mr: 1, verticalAlign: "middle" }} />
+            {"Pro tip: veja mais "}
+            <Link href="https://mui.com/material-ui/getting-started/templates/">
+              templates
+            </Link>
+            {" na documentação do Material UI."}
           </Typography>
         );
       }
@@ -83,12 +82,12 @@
       function Copyright() {
         return (
           <Typography variant="body2" color="text.secondary" align="center">
-            {'Copyright © '}
+            {"Copyright © "}
             <Link color="inherit" href="https://mui.com/">
-              Your Website
-            </Link>{' '}
+              Seu Site
+            </Link>{" "}
             {new Date().getFullYear()}
-            {'.'}
+            {"."}
           </Typography>
         );
       }
@@ -98,7 +97,7 @@
           <Container maxWidth="sm">
             <Box sx={{ my: 4 }}>
               <Typography variant="h4" component="h1" sx={{ mb: 2 }}>
-                Material UI CDN example
+                Material UI via CDN (GitHub Pages)
               </Typography>
               <ProTip />
               <Copyright />
@@ -107,27 +106,13 @@
         );
       }
 
-      const root = createRoot(document.getElementById('root'));
+      const root = createRoot(document.getElementById("root"));
       root.render(
         <ThemeProvider theme={theme}>
-          {/* CssBaseline kickstart an elegant, consistent, and simple baseline to build upon. */}
           <CssBaseline />
           <App />
-        </ThemeProvider>,
+        </ThemeProvider>
       );
     </script>
   </body>
-=======
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Projeto Pex</title>
-</head>
-<body>
-    <h1> Atualizando o Projeto</h1>
-    <p>Projeto PEX - Visão Computacional</p>
-    <h2>Conheça nosso projeto</h2>    
-    <p> Testando</p>
-</body>
->>>>>>> de5dda43d1322f3958fcf8a855bca4429cf742d9
 </html>
